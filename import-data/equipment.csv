@@ -1,0 +1,34 @@
+equipment_id,name,category,description,source,layout_cell_refs,verification_status
+1,Ab Bench,Free weights / station,,Wilson Weightroom Layout 2026.xlsx,47:19,Name from layout; details unverified
+2,Abdominal Crunch Machine,Strength machine,,Wilson Weightroom Layout 2026.xlsx,32:21; 47:20,Name from layout; details unverified
+3,Assisted Dip / Chin-Up,Strength machine,,Wilson Weightroom Layout 2026.xlsx,32:17,Name from layout; details unverified
+4,Back Extension Machine,Strength machine,,Wilson Weightroom Layout 2026.xlsx,32:23; 47:22,Name from layout; details unverified
+5,Biceps Curl Machine,Strength machine,,Wilson Weightroom Layout 2026.xlsx,21:25; 38:15,Name from layout; details unverified
+6,Cable Station,Cable station,,Wilson Weightroom Layout 2026.xlsx,21:5; 21:13; 23:5; 23:13; 31:5; 31:13; 33:5; 33:13,Name from layout; details unverified
+7,Calf Raise,Strength machine,,Wilson Weightroom Layout 2026.xlsx,47:28,Name from layout; details unverified
+8,Chest Press,Strength machine,,Wilson Weightroom Layout 2026.xlsx,38:21,Name from layout; details unverified
+9,Decline Bench,Free weights / station,,Wilson Weightroom Layout 2026.xlsx,41:4,Name from layout; details unverified
+10,Decline Press Machine,Strength machine,,Wilson Weightroom Layout 2026.xlsx,21:15,Name from layout; details unverified
+11,Flat Bench,Free weights / station,,Wilson Weightroom Layout 2026.xlsx,3:27; 4:2,Name from layout; details unverified
+12,Glute Machine,Strength machine,,Wilson Weightroom Layout 2026.xlsx,27:25,Name from layout; details unverified
+13,Glute-Ham Raise,Strength machine,,Wilson Weightroom Layout 2026.xlsx,47:24,Name from layout; details unverified
+14,Hack Squat,Strength machine,,Wilson Weightroom Layout 2026.xlsx,47:26,Name from layout; details unverified
+15,Hip Abductor / Adductor,Strength machine,,Wilson Weightroom Layout 2026.xlsx,29:26,Name from layout; details unverified
+16,Hip Thrust,Strength machine,,Wilson Weightroom Layout 2026.xlsx,27:19; 47:29,Name from layout; details unverified
+17,Incline Press Machine,Strength machine,,Wilson Weightroom Layout 2026.xlsx,21:19,Name from layout; details unverified
+18,Kettlebell Rack,Free weights / station,,Wilson Weightroom Layout 2026.xlsx,49:4,Name from layout; details unverified
+19,Lat Pulldown,Strength machine,,Wilson Weightroom Layout 2026.xlsx,21:7; 21:11; 21:21; 31:7; 31:11; 38:23,Name from layout; details unverified
+20,Lateral Raise Machine,Strength machine,,Wilson Weightroom Layout 2026.xlsx,32:19,Name from layout; details unverified
+21,Leg Curl Machine,Strength machine,,Wilson Weightroom Layout 2026.xlsx,27:23,Name from layout; details unverified
+22,Leg Extension,Strength machine,,Wilson Weightroom Layout 2026.xlsx,27:21; 32:28,Name from layout; details unverified
+23,Leg Press,Strength machine,,Wilson Weightroom Layout 2026.xlsx,23:28; 27:17; 27:28,Name from layout; details unverified
+24,Military Bench,Free weights / station,,Wilson Weightroom Layout 2026.xlsx,41:2,Name from layout; details unverified
+25,Pec Deck,Strength machine,,Wilson Weightroom Layout 2026.xlsx,27:15; 32:15,Name from layout; details unverified
+26,Preacher Bench,Free weights / station,,Wilson Weightroom Layout 2026.xlsx,11:26; 11:27,Name from layout; details unverified
+27,Prone Leg Curl Machine,Strength machine,,Wilson Weightroom Layout 2026.xlsx,19:28,Name from layout; details unverified
+28,Row Machine,Strength machine,,Wilson Weightroom Layout 2026.xlsx,21:17; 38:19,Name from layout; details unverified
+29,Seated Row,Strength machine,,Wilson Weightroom Layout 2026.xlsx,23:7; 23:11,Name from layout; details unverified
+30,Shoulder Press,Strength machine,,Wilson Weightroom Layout 2026.xlsx,3:13; 21:23; 32:25,Name from layout; details unverified
+31,Smith Machine,Smith machine,,Wilson Weightroom Layout 2026.xlsx,2:27; 3:2,Name from layout; details unverified
+32,Squat Rack,Free weights / station,,Wilson Weightroom Layout 2026.xlsx,3:22,Name from layout; details unverified
+33,Triceps Extension Machine,Strength machine,,Wilson Weightroom Layout 2026.xlsx,38:17,Name from layout; details unverified
