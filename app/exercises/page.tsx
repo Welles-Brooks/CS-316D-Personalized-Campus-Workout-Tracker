@@ -1,4 +1,5 @@
-
+import Link from "next/link";
+import { wilsonExerciseNames } from "@/lib/wilson-exercises";
 import db from "@/lib/db";
 
 export const instant = false;
@@ -27,33 +28,51 @@ export default async function ExercisesPage({
   const muscle = params.muscle ?? "";
   const type = params.type ?? "";
 
-  const exercises = db.prepare(`
+  
+const exercises = db.prepare(`
     SELECT
-      ex.id,
-      ex.name,
-      ex.description,
-      ex.muscle_group,
-      ex.equipment_type,
-      eq.name AS equipment_name
+    ex.id,
+    ex.name,
+    ex.description,
+    ex.muscle_group,
+    ex.equipment_type,
+    eq.name AS equipment_name,
+    eq.id AS equipment_id
     FROM exercises ex
     LEFT JOIN equipment eq ON ex.equipment_id = eq.id
-    WHERE ex.name LIKE ?
-      AND (? = '' OR ex.muscle_group = ?)
-      AND (? = '' OR ex.equipment_type = ?)
+    WHERE ex.name IN (
+    SELECT value FROM json_each(?)
+    )
+    AND ex.name LIKE ?
+    AND (? = '' OR LOWER(ex.muscle_group) = ?)
+    AND (? = '' OR LOWER(ex.equipment_type) = ?)
     ORDER BY ex.name
-  `).all(`%${search}%`, muscle, muscle, type, type) as Exercise[];
+    `).all(
+    JSON.stringify(wilsonExerciseNames),
+    `%${search}%`,
+    muscle,
+    muscle,
+    type,
+    type
+) as Exercise[];
 
-  const muscles = db.prepare(`
-    SELECT DISTINCT muscle_group
+const muscles = db.prepare(`
+    SELECT DISTINCT LOWER(muscle_group) AS muscle_group
     FROM exercises
+    WHERE name IN (SELECT value FROM json_each(?))
     ORDER BY muscle_group
-  `).all() as { muscle_group: string }[];
+    `).all(
+    JSON.stringify(wilsonExerciseNames)
+) as { muscle_group: string }[];
 
-  const types = db.prepare(`
-    SELECT DISTINCT equipment_type
+const types = db.prepare(`
+    SELECT DISTINCT LOWER(equipment_type) AS equipment_type
     FROM exercises
+    WHERE name IN (SELECT value FROM json_each(?))
     ORDER BY equipment_type
-  `).all() as { equipment_type: string }[];
+    `).all(
+    JSON.stringify(wilsonExerciseNames)
+) as { equipment_type: string }[];
 
   return (
     <main style={{ padding: "40px" }}>
@@ -81,7 +100,10 @@ export default async function ExercisesPage({
           <option value="">All muscle groups</option>
           {muscles.map((m) => (
             <option key={m.muscle_group} value={m.muscle_group}>
-              {m.muscle_group}
+              {m.muscle_group
+                .split(" ")
+                .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+                .join(" ")}
             </option>
           ))}
         </select>
@@ -90,7 +112,10 @@ export default async function ExercisesPage({
           <option value="">All equipment types</option>
           {types.map((t) => (
             <option key={t.equipment_type} value={t.equipment_type}>
-              {t.equipment_type}
+              {t.equipment_type
+                .split(" ")
+                .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+                .join(" ")}
             </option>
           ))}
         </select>

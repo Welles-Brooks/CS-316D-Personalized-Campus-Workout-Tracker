@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { wilsonNames } from "@/lib/wilson-equipment";
 
 export const instant = false;
 
@@ -24,18 +25,31 @@ export default async function EquipmentPage({
   const type = params.type ?? "";
 
   const equipment = db
-    .prepare(
-      `SELECT *
-       FROM equipment
-       WHERE name LIKE ?
-         AND (? = '' OR type = ?)
-       ORDER BY name`
-    )
-    .all(`%${search}%`, type, type) as Equipment[];
+  .prepare(
+    `SELECT *
+     FROM equipment
+     WHERE name IN (
+       SELECT name FROM json_each(?)
+     )
+       AND name LIKE ?
+       AND (? = '' OR LOWER(type) = LOWER(?))
+     ORDER BY name`
+  )
+  .all(
+    JSON.stringify(wilsonNames),
+    `%${search}%`,
+    type,
+    type
+  ) as Equipment[];
 
   const categories = db
-    .prepare("SELECT DISTINCT type FROM equipment ORDER BY type")
-    .all() as { type: string }[];
+  .prepare(`
+    SELECT DISTINCT LOWER(type) AS type
+    FROM equipment
+    WHERE name IN (SELECT value FROM json_each(?))
+    ORDER BY type
+  `)
+  .all(JSON.stringify(wilsonNames)) as { type: string }[];
 
   return (
     <main style={{ padding: "40px" }}>
@@ -63,9 +77,12 @@ export default async function EquipmentPage({
           <option value="">All equipment types</option>
           {categories.map((category) => (
             <option key={category.type} value={category.type}>
-              {category.type}
+                {category.type
+                .split(" ")
+                .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+                .join(" ")}
             </option>
-          ))}
+            ))}
         </select>
 
         <button type="submit" style={{ padding: "10px 20px" }}>
