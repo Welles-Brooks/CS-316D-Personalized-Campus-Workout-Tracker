@@ -1,0 +1,24 @@
+exercise_id,name,primary_muscle_group,description,data_status
+1,Smith Machine Squat,Quadriceps,,Illustrative exercise association; verify before publication
+2,Smith Machine Bench Press,Chest,,Illustrative exercise association; verify before publication
+3,Barbell Back Squat,Quadriceps,,Illustrative exercise association; verify before publication
+4,Lat Pulldown,Back,,Illustrative exercise association; verify before publication
+5,Seated Row,Back,,Illustrative exercise association; verify before publication
+6,Pec Deck Fly,Chest,,Illustrative exercise association; verify before publication
+7,Leg Press,Quadriceps,,Illustrative exercise association; verify before publication
+8,Leg Extension,Quadriceps,,Illustrative exercise association; verify before publication
+9,Leg Curl,Hamstrings,,Illustrative exercise association; verify before publication
+10,Prone Leg Curl,Hamstrings,,Illustrative exercise association; verify before publication
+11,Machine Shoulder Press,Shoulders,,Illustrative exercise association; verify before publication
+12,Cable Triceps Pushdown,Triceps,,Illustrative exercise association; verify before publication
+13,Cable Biceps Curl,Biceps,,Illustrative exercise association; verify before publication
+14,Machine Chest Press,Chest,,Illustrative exercise association; verify before publication
+15,Machine Abdominal Crunch,Core,,Illustrative exercise association; verify before publication
+16,Machine Hip Thrust,Glutes,,Illustrative exercise association; verify before publication
+17,Assisted Pull-Up,Back,,Illustrative exercise association; verify before publication
+18,Hack Squat,Quadriceps,,Illustrative exercise association; verify before publication
+19,Standing Calf Raise,Calves,,Illustrative exercise association; verify before publication
+20,Machine Lateral Raise,Shoulders,,Illustrative exercise association; verify before publication
+21,Machine Biceps Curl,Biceps,,Illustrative exercise association; verify before publication
+22,Machine Triceps Extension,Triceps,,Illustrative exercise association; verify before publication
+23,Machine Back Extension,Lower Back,Extend the torso using the back extension machine with controlled movement.,Illustrative exercise association; verify before publication
