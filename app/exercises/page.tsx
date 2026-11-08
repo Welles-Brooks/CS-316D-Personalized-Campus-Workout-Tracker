@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { wilsonExerciseNames } from "@/lib/wilson-exercises";
 import db from "@/lib/db";
 
