@@ -93,3 +93,7 @@ Checks cover anonymous access, registration, duplicate accounts, profile validat
 ## Database workflow
 
 `db/schema.sql` defines the tables; `data/app.db` holds local records and is ignored by Git. `db:init` creates missing tables but does not migrate existing ones. For disposable development data, recreate the database and reseed after schema changes. Preserve important records before doing so.
+
+## LLM Use
+
+LLMs were used to assist with the implementation of the code. We verified the implementation as we went through local rendering and testing the features.
