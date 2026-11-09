@@ -22,3 +22,15 @@ exercise_id,name,primary_muscle_group,description,data_status
 21,Machine Biceps Curl,Biceps,,Illustrative exercise association; verify before publication
 22,Machine Triceps Extension,Triceps,,Illustrative exercise association; verify before publication
 23,Machine Back Extension,Lower Back,Extend the torso using the back extension machine with controlled movement.,Illustrative exercise association; verify before publication
+24,Bench Crunch,Abdominals,An abdominal crunch performed on an exercise bench.,Illustrative exercise association; verify before publication
+25,Decline Dumbbell Bench Press,Chest,A dumbbell chest press performed on a decline bench.,Illustrative exercise association; verify before publication
+26,Machine Decline Chest Press,Chest,A chest pressing exercise using a decline press machine.,Illustrative exercise association; verify before publication
+27,Machine Glute Kickback,Glutes,A resistance exercise targeting the gluteal muscles.,Illustrative exercise association; verify before publication
+28,Glute-Ham Raise,Hamstrings,A bodyweight exercise targeting the hamstrings and glutes.,Illustrative exercise association; verify before publication
+29,Hip Abduction,Hip Abductors,A resistance exercise moving the legs outward.,Illustrative exercise association; verify before publication
+30,Hip Adduction,Hip Adductors,A resistance exercise moving the legs inward.,Illustrative exercise association; verify before publication
+31,Machine Incline Chest Press,Chest,An incline chest press performed using a resistance machine.,Illustrative exercise association; verify before publication
+32,Kettlebell Swing,Glutes,A hip-hinge exercise performed with a kettlebell.,Illustrative exercise association; verify before publication
+33,Seated Shoulder Press,Shoulders,An overhead pressing exercise performed while seated.,Illustrative exercise association; verify before publication
+34,Preacher Curl,Biceps,A biceps curl performed with the upper arms supported.,Illustrative exercise association; verify before publication
+35,Machine Row,Back,A resistance rowing exercise targeting the back muscles.,Illustrative exercise association; verify before publication
