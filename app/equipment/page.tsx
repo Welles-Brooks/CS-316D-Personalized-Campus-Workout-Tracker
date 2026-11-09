@@ -52,7 +52,7 @@ export default async function EquipmentPage({
   .all(JSON.stringify(wilsonNames)) as { type: string }[];
 
   return (
-    <main style={{ padding: "40px" }}>
+    <main style={{ padding: "41px" }}>
       <h1>Wilson Recreation Center Equipment</h1>
       <p>Browse and search the equipment available at Wilson.</p>
 
