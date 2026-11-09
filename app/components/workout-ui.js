@@ -6,6 +6,8 @@ import { api } from './profile-ui';
 import { Field, Icon, Notice } from './profile-elements';
 
 const blankRow = { exercise_id: '', equipment_id: '', sets: '3', reps: '10', weight: '' };
+const blankMeta = { date: '', start_time: '', duration_minutes: '', location: 'Wilson Rec Center', feel: '', effort: '', notes: '' };
+const localDate = () => new Date().toLocaleDateString('en-CA');
 const isCardioType = t => /cardio/i.test(t || '');
 
 export function WorkoutForm({ mode = 'session', fromId = '' }) {
@@ -13,16 +15,14 @@ export function WorkoutForm({ mode = 'session', fromId = '' }) {
   const isTemplate = mode === 'template';
   const [options, setOptions] = useState({ exercises: [], equipment: [] });
   const [rows, setRows] = useState([{ ...blankRow }]);
-  const [meta, setMeta] = useState({
-    date: new Date().toLocaleDateString('en-CA'), start_time: '', duration_minutes: '',
-    location: 'Wilson Rec Center', feel: '', effort: '', notes: '',
-  });
+  const [meta, setMeta] = useState(blankMeta);
   const [saveTemplate, setSaveTemplate] = useState(false);
   const [error, setError] = useState('');
   const [pending, setPending] = useState(false);
 
   useEffect(() => {
     let active = true;
+    const dateTimer = setTimeout(() => setMeta(m => ({ ...m, date: m.date || localDate() })), 0);
     const jobs = [api('/api/exercises')];
     if (fromId) jobs.push(api(`/api/workouts/${fromId}`));
     Promise.all(jobs).then(([opts, src]) => {
@@ -37,26 +37,32 @@ export function WorkoutForm({ mode = 'session', fromId = '' }) {
         setMeta(m => ({ ...m, location: w.location || m.location, duration_minutes: String(w.duration_minutes ?? '') }));
       }
     }).catch(e => { if (active) setError(e.message); });
-    return () => { active = false; };
+    return () => { active = false; clearTimeout(dateTimer); };
   }, [fromId]);
 
   const setRow = (i, patch) => setRows(rs => rs.map((r, j) => (j === i ? { ...r, ...patch } : r)));
   const cardio = id => isCardioType(options.exercises.find(x => String(x.id) === id)?.equipment_type);
 
   async function submit(event) {
-    event.preventDefault(); setPending(true); setError('');
+    event.preventDefault();
+    if (pending) return;
+    setPending(true); setError('');
     try {
       const data = await api('/api/workouts', 'POST', { ...meta, is_template: isTemplate, save_as_template: saveTemplate, exercises: rows });
-      router.push(`/workouts/${data.id}`); router.refresh();
-    } catch (e) { setError(e.message); setPending(false); }
+      setRows([{ ...blankRow }]);
+      setMeta({ ...blankMeta, date: localDate() });
+      setSaveTemplate(false);
+      router.replace(`/workouts/${data.id}`); router.refresh();
+    } catch (e) { setError(e.message); }
+    finally { setPending(false); }
   }
 
   return <main className="page-shell edit-shell">
     <Link className="back-link" href="/profile"><Icon name="back" size={16} />Back to profile</Link>
     <div className="page-heading"><div>
-      <span className="eyebrow">{isTemplate ? 'PLAN AHEAD' : fromId ? 'ROUND TWO' : 'LOG YOUR WORK'}</span>
+
       <h1>{isTemplate ? 'Create a workout' : 'Track a workout'}<span className="blue-dot">.</span></h1>
-      <p>{isTemplate ? 'Build a routine you can reuse any time.' : 'Add what you did. Adjust the numbers as you go.'}</p>
+
     </div></div>
     <form onSubmit={submit}>
       <section className="card form-section">
