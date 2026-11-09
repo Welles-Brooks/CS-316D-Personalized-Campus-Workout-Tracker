@@ -10,6 +10,7 @@ type Exercise = {
   muscle_group: string;
   equipment_type: string;
   equipment_name: string | null;
+  equipment_id: number | null;
 };
 
 export default async function ExercisesPage({
@@ -37,7 +38,6 @@ const exercises = db.prepare(`
     ex.equipment_type,
     eq.name AS equipment_name,
     eq.id AS equipment_id
-    equipment_id: number | null;
     FROM exercises ex
     LEFT JOIN equipment eq ON ex.equipment_id = eq.id
     WHERE ex.name IN (
