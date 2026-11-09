@@ -134,35 +134,72 @@ const types = db.prepare(`
         <p>No exercises match your search.</p>
       )}
 
-      {exercises.map((exercise) => (
-        <div
-          key={exercise.id}
+      
+  {exercises.map((exercise) => {
+    const content = (
+      <>
+        <h3
           style={{
-            border: "1px solid #ccc",
-            borderRadius: "8px",
-            padding: "16px",
-            marginTop: "15px",
+            marginTop: 0,
+            marginBottom: "12px",
+            fontSize: "22px",
+            fontWeight: 700,
           }}
         >
-          <h3>{exercise.name}</h3>
-          <p>Muscle group: {exercise.muscle_group}</p>
-          <p>Equipment type: {exercise.equipment_type}</p>
-          <p>
-          Equipment:{" "}
-          {exercise.equipment_id !== null && exercise.equipment_name ? (
-            <Link
-              href={`/equipment/${exercise.equipment_id}`}
-              style={{ color: "#012169", textDecoration: "underline" }}
-            >
-              {exercise.equipment_name}
-            </Link>
-          ) : (
-            "None specified"
-          )}
+          {exercise.name}
+        </h3>
+
+        <p>Muscle group: {exercise.muscle_group}</p>
+        <p>Equipment type: {exercise.equipment_type}</p>
+        <p>
+          Equipment: {exercise.equipment_name ?? "None specified"}
         </p>
-          {exercise.description && <p>{exercise.description}</p>}
-        </div>
-      ))}
+
+        {exercise.description && <p>{exercise.description}</p>}
+
+        {exercise.equipment_id !== null && (
+          <p
+            style={{
+              color: "#012169",
+              fontWeight: 600,
+              marginBottom: 0,
+            }}
+          >
+            View Equipment →
+          </p>
+        )}
+      </>
+    );
+
+    const cardStyle = {
+      display: "block",
+      border: "1px solid #ccc",
+      borderRadius: "10px",
+      padding: "20px",
+      marginTop: "15px",
+      textDecoration: "none",
+      color: "inherit",
+      backgroundColor: "transparent",
+    };
+
+    return exercise.equipment_id !== null ? (
+      <Link
+        key={exercise.id}
+        href={`/equipment/${exercise.equipment_id}`}
+        style={{
+          ...cardStyle,
+          cursor: "pointer",
+        }}
+      >
+        {content}
+      </Link>
+    ) : (
+      <div key={exercise.id} style={cardStyle}>
+        {content}
+      </div>
+    );
+  })}
+
     </main>
   );
 }

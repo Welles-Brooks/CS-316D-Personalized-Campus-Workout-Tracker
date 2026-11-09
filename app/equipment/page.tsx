@@ -98,25 +98,52 @@ export default async function EquipmentPage({
         <p>No equipment matches your search.</p>
       )}
 
-      {equipment.map((item) => (
-        <div
-          key={item.id}
+      
+    {equipment.map((item) => (
+      <Link
+        key={item.id}
+        href={`/equipment/${item.id}`}
+        style={{
+          display: "block",
+          border: "1px solid #ccc",
+          borderRadius: "10px",
+          padding: "20px",
+          marginTop: "15px",
+          textDecoration: "none",
+          color: "inherit",
+          backgroundColor: "transparent",
+          cursor: "pointer",
+        }}
+      >
+        <h3
           style={{
-            padding: "15px",
-            marginTop: "15px",
-            border: "1px solid #ccc",
-            borderRadius: "8px",
+            marginTop: 0,
+            marginBottom: "12px",
+            fontSize: "22px",
+            fontWeight: 700,
           }}
         >
-          <h3>
-         <Link href={`/equipment/${item.id}`}>
-            {item.name}
-        </Link>
+          {item.name}
         </h3>
-          <p>Type: {item.type}</p>
+
+        <p>Type: {item.type}</p>
+
+        {item.description && (
           <p>{item.description}</p>
-        </div>
-      ))}
+        )}
+
+        <p
+          style={{
+            color: "#012169",
+            fontWeight: 600,
+            marginBottom: 0,
+          }}
+        >
+          View Equipment Details →
+        </p>
+      </Link>
+    ))}
+
     </main>
   );
 }
