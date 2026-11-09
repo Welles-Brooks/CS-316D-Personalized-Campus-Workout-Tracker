@@ -27,17 +27,17 @@ const tables = [
 const users = [
   {
     email: 'carlie@gmail.com', username: 'carlielifts', full_name: 'Carlie Scheer',
-    address: '123 Main St, Durham, NC', fitness_goals: 'Build muscle and strength',
+    address: 'Hollows', fitness_goals: 'Build muscle and strength',
     experience_level: 'Intermediate', preferred_workout_minutes: 60, workouts_per_week: 4, is_public: 1,
   },
   {
     email: 'pk@gmail.com', username: 'pkruns', full_name: 'Priscilla Kang',
-    address: '124 Main St, Durham, NC', fitness_goals: 'Improve cardio',
+    address: 'Bell Tower', fitness_goals: 'Improve cardio',
     experience_level: 'Beginner', preferred_workout_minutes: 45, workouts_per_week: 3, is_public: 1,
   },
   {
     email: 'sola@gmail.com', username: 'solafit', full_name: 'Sola Corrado',
-    address: '125 Main St, Durham, NC', fitness_goals: 'General fitness',
+    address: 'Off-campus', fitness_goals: 'General fitness',
     experience_level: 'Advanced', preferred_workout_minutes: 75, workouts_per_week: 5, is_public: 0,
   },
 ];
