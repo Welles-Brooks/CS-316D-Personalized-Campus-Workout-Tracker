@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { wilsonExerciseNames } from "@/lib/wilson-exercises";
 import db from "@/lib/db";
 
@@ -146,7 +147,19 @@ const types = db.prepare(`
           <h3>{exercise.name}</h3>
           <p>Muscle group: {exercise.muscle_group}</p>
           <p>Equipment type: {exercise.equipment_type}</p>
-          <p>Equipment: {exercise.equipment_name ?? "None specified"}</p>
+          <p>
+          Equipment:{" "}
+          {exercise.equipment_id !== null && exercise.equipment_name ? (
+            <Link
+              href={`/equipment/${exercise.equipment_id}`}
+              style={{ color: "#012169", textDecoration: "underline" }}
+            >
+              {exercise.equipment_name}
+            </Link>
+          ) : (
+            "None specified"
+          )}
+        </p>
           {exercise.description && <p>{exercise.description}</p>}
         </div>
       ))}
