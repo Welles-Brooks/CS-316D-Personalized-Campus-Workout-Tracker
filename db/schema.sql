@@ -76,3 +76,10 @@ CREATE TABLE IF NOT EXISTS blocks (
   blocked_id INTEGER NOT NULL REFERENCES users(id),
   PRIMARY KEY (blocker_id, blocked_id)
 );
+
+CREATE TABLE IF NOT EXISTS workout_attendees (
+  workout_id INTEGER NOT NULL REFERENCES workouts(id) ON DELETE CASCADE,
+  user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+  created_at TEXT DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (workout_id, user_id)
+);
